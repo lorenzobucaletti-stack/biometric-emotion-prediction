@@ -1,0 +1,25 @@
+==================================================
+FINAL MODEL EVALUATION RESULTS
+==================================================
+Accuracy:  0.6256 (62.6%)
+F1-Score:  0.6248 (Macro Average)
+AUC-ROC:   0.6749
+
+--------------------------------------------------
+DETAILED CLASSIFICATION REPORT
+--------------------------------------------------
+                      precision    recall  f1-score   support
+
+Negative Emotion (0)       0.60      0.69      0.64      4500
+Positive Emotion (1)       0.66      0.56      0.61      4800
+
+            accuracy                           0.63      9300
+           macro avg       0.63      0.63      0.62      9300
+        weighted avg       0.63      0.63      0.62      9300
+
+--------------------------------------------------
+CONFUSION MATRIX
+--------------------------------------------------
+True Negative (TN):  3124  | False Positive (FP): 1376
+False Negative (FN): 2106  | True Positive (TP):  2694
+==================================================
