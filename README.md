@@ -41,6 +41,7 @@ Deep Learning framework for binary emotion recognition (positive vs. negative va
  ┌──────────────┐                                                                ┌──────────────┐
  │ Dense Head   │ Linear(Flatten, 64) -> Dropout(0.4) -> Linear(64, 1)           │ Majority Vote│ Decision rule: sum(votes) >= 2
  └──────────────┘                                                                └──────────────┘
+```text
 
 ## Experimental Phases & Methodology
 
