@@ -79,3 +79,40 @@ Deep Learning framework for binary emotion recognition (positive vs. negative va
 | **ECG Definitive Baseline** | $(1, 1000)$ | Undersampling + F1 Checkpoint | 62.73% | **0.6300** | 0.6769 | 0.6200 |
 | **Late Fusion (Tribunal)** | $3 \times (1, 1000)$ | Undersampling + Majority Vote | 63.00% | **0.6300** | — | 0.6800 |
 | **Early Fusion (Best Model)** | $(3, 1000)$ | Undersampling + LR Scheduler | **66.40%** | **0.6630** | **0.7291** | **0.7300** |
+
+├── docs/
+│   └── Report_ML.pdf                   # Complete scientific paper and technical report
+├── src/
+│   ├── common/                         # Shared utilities
+│   │   ├── config.py                   # Master path definitions and hyperparameters
+│   │   ├── create_index.py             # Raw data scanning and physical undersampling
+│   │   ├── split_data.py               # Subject-wise 70/15/15 partitioner
+│   │   └── run_total.py                # End-to-end pipeline orchestrator
+│   ├── Fase1/                          # Phase 1: Unimodal ECG
+│   │   ├── config_FASE1.py             # Hyperparameters & class mapping
+│   │   ├── dataset_FASE1.py            # Lazy loading & per-window Z-score
+│   │   ├── model_FASE1.py              # 1D-CNN PyTorch architecture
+│   │   ├── train_FASE1.py              # Training loop with Macro-F1 checkpointing
+│   │   ├── evaluate.py                 # Metric evaluation and confusion matrix
+│   │   └── run_script_FASE1.py         # Phase 1 pipeline runner
+│   ├── Fase2/                          # Phase 2: Multimodal Fusion
+│   │   ├── early_fusion/               # 3-channel 1D-CNN (Affect, ECG, EDA)
+│   │   │   ├── config_FASE2_early.py
+│   │   │   ├── dataset_FASE2_early.py
+│   │   │   ├── model_FASE2_early.py
+│   │   │   ├── train_FASE2_early.py
+│   │   │   └── test_FASE2_early.py
+│   │   └── late_fusion/                # Parallel unimodal branches + Majority voting
+│   │       ├── config_FASE2_late.py
+│   │       ├── dataset_FASE2_late.py
+│   │       ├── model_FASE2_late.py
+│   │       ├── train_FASE2_late.py
+│   │       └── test_FASE2_late.py
+│   └── Fase3/                          # Phase 3: Explainability (SHAP)
+│       ├── shap_fase1.py               # Single-lead ECG visual explanations
+│       ├── shap_fase2_early.py         # 3-channel multimodal SHAP overlay
+│       ├── shap_fase2_late.py          # Independent multi-judge SHAP attribution
+│       ├── plots/                      # Exported visual explanations (Phase 1)
+│       ├── plots_early_fusion/         # Exported visual explanations (Early Fusion)
+│       └── plots_late_fusion/          # Exported visual explanations (Late Fusion)
+└── README.md
