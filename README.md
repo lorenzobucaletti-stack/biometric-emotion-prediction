@@ -80,6 +80,7 @@ Deep Learning framework for binary emotion recognition (positive vs. negative va
 | **Late Fusion (Tribunal)** | $3 \times (1, 1000)$ | Undersampling + Majority Vote | 63.00% | **0.6300** | — | 0.6800 |
 | **Early Fusion (Best Model)** | $(3, 1000)$ | Undersampling + LR Scheduler | **66.40%** | **0.6630** | **0.7291** | **0.7300** |
 
+'''text
 ├── docs/
 │   └── Report_ML.pdf                   # Complete scientific paper and technical report
 ├── src/
